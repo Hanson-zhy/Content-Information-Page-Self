@@ -1,4 +1,4 @@
-/* style.css - 社交按钮动画效果 */
+/* style.css - 修复后的社交按钮动画效果 */
 /* 基础样式 */
 * {
     margin: 0;
@@ -6,13 +6,20 @@
     box-sizing: border-box;
 }
 
-body {
+html, body {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+}
+
+/* 添加容器确保内容显示 */
+.social-container {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    width: 100%;
     padding: 20px;
     overflow-x: auto;
 }
@@ -20,6 +27,7 @@ body {
 /* 导航容器 */
 .cover-navigation {
     width: 100%;
+    max-width: 1200px;
     display: flex;
     justify-content: center;
 }
@@ -30,6 +38,7 @@ body {
     list-style: none;
     padding: 0;
     gap: 15px;
+    margin: 0 auto;
 }
 
 /* 导航项样式 */
@@ -171,11 +180,10 @@ body {
 
 /* 响应式设计 - 优化移动端显示 */
 @media (max-width: 768px) {
-    body {
-        padding: 10px;
-        min-height: 100vh;
+    .social-container {
         align-items: flex-start;
         padding-top: 40px;
+        padding-bottom: 40px;
     }
     
     .cover-navigation {
