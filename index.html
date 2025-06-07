@@ -3,258 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="动态社交按钮 - 基于大碗绿豆沙教程优化">
+    <meta name="description" content="动态社交按钮动画效果 - 基于大碗绿豆沙教程优化">
+    <title>社交按钮动画 | Hanson-zhy</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <title>社交导航 | Hanson-zhy</title>
-    <style>
-        /* 基础样式 */
-        :root {
-            --github: #333;
-            --cnblogs: #2e7acc;
-            --zhihu: #0084ff;
-            --email: #d44638;
-            --text-dark: #333;
-            --text-light: #f8f9fa;
-            --transition-speed: 0.4s;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
-            font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-            padding: 20px;
-        }
-
-        /* 导航容器 */
-        .cover-navigation {
-            max-width: 800px;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            backdrop-filter: blur(10px);
-        }
-
-        .navigation {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-            list-style: none;
-        }
-
-        /* 导航项 */
-        .navigation__item {
-            position: relative;
-            overflow: visible;
-        }
-
-        .navigation__item a {
-            display: inline-flex;
-            align-items: center;
-            height: 70px;
-            min-width: 70px;
-            padding: 0 25px 0 10px;
-            background: white;
-            border-radius: 35px;
-            text-decoration: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-            transition: all var(--transition-speed) cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            overflow: hidden;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* 图标样式 */
-        .navigation__item .icon {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            margin-right: 15px;
-            transition: all var(--transition-speed) ease;
-            position: relative;
-            z-index: 2;
-        }
-
-        .navigation__item .icon i {
-            font-size: 28px;
-            transition: transform 0.3s ease, color 0.3s ease;
-        }
-
-        /* 文字标签 */
-        .navigation__item .label {
-            font-size: 18px;
-            font-weight: 600;
-            color: var(--text-dark);
-            opacity: 0;
-            width: 0;
-            transition: 
-                opacity 0.3s ease, 
-                width 0.3s ease,
-                color 0.3s ease;
-            white-space: nowrap;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* 悬停效果 */
-        .navigation__item:hover a {
-            min-width: 200px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-            transform: translateY(-5px);
-        }
-
-        .navigation__item:hover .label {
-            opacity: 1;
-            width: auto;
-            padding-right: 15px;
-        }
-
-        .navigation__item:hover .icon {
-            transform: scale(0.9);
-        }
-
-        .navigation__item:hover .icon i {
-            transform: scale(1.15);
-            color: white !important;
-        }
-
-        /* 平台特定颜色 */
-        .navigation__item:nth-child(1):hover .icon { background: var(--github); }
-        .navigation__item:nth-child(1) .label { color: var(--github); }
-
-        .navigation__item:nth-child(2):hover .icon { background: var(--cnblogs); }
-        .navigation__item:nth-child(2) .label { color: var(--cnblogs); }
-
-        .navigation__item:nth-child(3):hover .icon { background: var(--zhihu); }
-        .navigation__item:nth-child(3) .label { color: var(--zhihu); }
-
-        .navigation__item:nth-child(4):hover .icon { background: var(--email); }
-        .navigation__item:nth-child(4) .label { color: var(--email); }
-
-        /* 波纹点击效果 */
-        .navigation__item a::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            opacity: 0;
-            z-index: 0;
-        }
-
-        .navigation__item a:active::after {
-            width: 300px;
-            height: 300px;
-            opacity: 1;
-            transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
-        }
-
-        .navigation__item a:active {
-            transform: translateY(-2px) scale(0.98);
-        }
-
-        /* 响应式设计 */
-        @media (max-width: 768px) {
-            .navigation {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .navigation__item {
-                width: 100%;
-                max-width: 300px;
-            }
-            
-            .navigation__item a {
-                width: 100%;
-                padding-right: 20px;
-            }
-            
-            .cover-navigation {
-                padding: 20px 15px;
-            }
-        }
-
-        /* 邮箱加密样式 */
-        .email-encrypted {
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .email-encrypted .tooltip {
-            position: absolute;
-            bottom: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            font-size: 12px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.3s ease;
-            margin-bottom: 8px;
-        }
-        
-        .email-encrypted:hover .tooltip {
-            opacity: 1;
-            visibility: visible;
-        }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="cover-navigation navigation--social">
-        <ul class="navigation">
-            <li class="navigation__item">
-                <a href="https://github.com/Hanson-zhy/" title="GitHub 主页" target="_blank" rel="noopener">
-                    <span class="icon"><i class="fab fa-github"></i></span>
-                    <span class="label">GitHub</span>
-                </a>
-            </li>
-            <li class="navigation__item">
-                <a href="http://www.cnblogs.com/dmego/" title="博客园主页" target="_blank" rel="noopener">
-                    <span class="icon"><i class="fab fa-blogger-b"></i></span>
-                    <span class="label">博客园</span>
-                </a>
-            </li>
-            <li class="navigation__item">
-                <a href="https://www.zhihu.com/people/dmego/" title="知乎主页" target="_blank" rel="noopener">
-                    <span class="icon"><i class="fab fa-zhihu"></i></span>
-                    <span class="label">知乎</span>
-                </a>
-            </li>
-            <li class="navigation__item">
-                <div class="email-encrypted" title="点击复制邮箱" onclick="copyEmail()">
-                    <a href="javascript:void(0);" title="联系邮箱">
-                        <span class="icon"><i class="fas fa-envelope"></i></span>
-                        <span class="label">邮箱</span>
+    <div class="container">
+        <h1>社交联系方式</h1>
+        <p class="subtitle">悬停查看动画效果 | 点击访问对应平台</p>
+        
+        <nav class="cover-navigation navigation--social">
+            <ul class="navigation">
+                <li class="navigation__item">
+                    <a href="https://github.com/Hanson-zhy/" title="GitHub 主页" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-github"></i></span>
+                        <span class="label">GitHub</span>
                     </a>
-                    <span class="tooltip">点击复制邮箱地址</span>
-                </div>
-            </li>
-        </ul>
-    </nav>
-
+                </li>
+                <li class="navigation__item">
+                    <a href="http://www.cnblogs.com/dmego/" title="博客园主页" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-blogger-b"></i></span>
+                        <span class="label">博客园</span>
+                    </a>
+                </li>
+                <li class="navigation__item">
+                    <a href="https://www.zhihu.com/people/dmego/" title="知乎主页" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-zhihu"></i></span>
+                        <span class="label">知乎</span>
+                    </a>
+                </li>
+                <li class="navigation__item">
+                    <div class="email-encrypted" title="点击复制邮箱">
+                        <a href="javascript:void(0);" title="联系邮箱">
+                            <span class="icon"><i class="fas fa-envelope"></i></span>
+                            <span class="label">邮箱</span>
+                        </a>
+                        <span class="tooltip">点击复制邮箱地址</span>
+                    </div>
+                </li>
+                <li class="navigation__item">
+                    <a href="https://bilibili.com/" title="Bilibili 主页" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-bilibili"></i></span>
+                        <span class="label">Bilibili</span>
+                    </a>
+                </li>
+                <li class="navigation__item">
+                    <a href="https://twitter.com/" title="Twitter 主页" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-twitter"></i></span>
+                        <span class="label">Twitter</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="info-box">
+            <h2>实现特性</h2>
+            <ul>
+                <li>纯CSS悬停动画效果</li>
+                <li>响应式设计，适配移动设备</li>
+                <li>平台专属配色方案</li>
+                <li>邮箱复制功能</li>
+                <li>优雅的点击反馈效果</li>
+                <li>语义化HTML结构</li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="footer">
+        基于大碗绿豆沙教程优化 | 使用HTML+CSS实现 | MIT License
+    </div>
+    
     <script>
         // 邮箱复制功能
         function copyEmail() {
@@ -276,18 +95,18 @@
                 });
         }
         
+        // 为邮箱元素添加点击事件
+        document.querySelector('.email-encrypted').addEventListener('click', copyEmail);
+        
         // 添加键盘导航支持
-        document.addEventListener('DOMContentLoaded', () => {
-            const navItems = document.querySelectorAll('.navigation__item a');
-            
-            navItems.forEach(item => {
-                item.addEventListener('keydown', (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        item.click();
-                    }
-                });
-            });
+        document.addEventListener('keydown', (e) => {
+            const focused = document.activeElement;
+            if (e.key === 'Enter' || e.key === ' ') {
+                if (focused.classList.contains('navigation__item') {
+                    e.preventDefault();
+                    focused.querySelector('a').click();
+                }
+            }
         });
     </script>
 </body>
