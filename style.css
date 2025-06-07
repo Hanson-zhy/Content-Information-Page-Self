@@ -50,29 +50,34 @@ h1 {
     margin-bottom: 10px;
 }
 
-/* 导航底座 */
-.navigation-base {
-    background: rgba(245, 245, 245, 0.7);
-    border-radius: 60px;
-    padding: 20px;
+/* 按钮底座容器 */
+.button-base {
+    background: rgba(248, 249, 250, 0.7);
+    border-radius: 25px;
+    padding: 30px;
+    margin: 20px 0;
     box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
-    margin: 0 auto;
-    max-width: 90%;
-    backdrop-filter: blur(5px);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    width: 100%;
 }
 
 /* 导航容器 */
 .cover-navigation {
-    margin: 40px 0;
+    margin: 0;
+    overflow-x: auto;
+    padding-bottom: 15px; /* 为滚动条留出空间 */
 }
 
 .navigation {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 25px;
+    flex-wrap: nowrap; /* 禁止换行 */
+    justify-content: flex-start;
+    gap: 20px;
     list-style: none;
-    padding: 0;
+    padding: 5px 10px;
+    min-width: fit-content; /* 确保内容不会被压缩 */
+    width: max-content; /* 根据内容宽度自适应 */
+    margin: 0 auto;
 }
 
 /* 导航项样式 */
@@ -80,6 +85,7 @@ h1 {
     position: relative;
     overflow: visible;
     transition: transform 0.3s ease;
+    flex-shrink: 0; /* 防止项目被压缩 */
 }
 
 .navigation__item:hover {
@@ -250,47 +256,41 @@ h1 {
     visibility: visible;
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
+/* 页脚 */
+.footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    color: #6c757d;
+    font-size: 0.95rem;
+}
+
+/* 响应式设计 - 优化移动端 */
+@media (max-width: 992px) {
     .container {
-        padding: 25px 15px;
+        padding: 30px 20px;
     }
     
     h1 {
-        font-size: 2.3rem;
+        font-size: 2.5rem;
     }
     
     .subtitle {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
     
-    /* 移动端优化 - 避免遮挡 */
-    .navigation-base {
-        padding: 15px;
-        border-radius: 40px;
-        max-width: 95%;
+    .button-base {
+        padding: 20px 15px;
     }
     
     .navigation {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        justify-content: flex-start;
-        padding: 10px 5px;
-        scrollbar-width: none; /* Firefox */
-    }
-    
-    .navigation::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
-    }
-    
-    .navigation__item {
-        flex-shrink: 0;
-        margin: 0 8px;
+        gap: 15px;
     }
     
     .navigation__item a {
         height: 70px;
         min-width: 70px;
+        padding: 0 25px 0 10px;
     }
     
     .icon {
@@ -299,7 +299,35 @@ h1 {
     }
     
     .icon i {
-        font-size: 26px;
+        font-size: 28px;
+    }
+    
+    .label {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.0rem;
+    }
+    
+    .subtitle {
+        font-size: 0.95rem;
+    }
+    
+    .navigation__item a {
+        height: 65px;
+        min-width: 65px;
+    }
+    
+    .icon {
+        width: 55px;
+        height: 55px;
+    }
+    
+    .icon i {
+        font-size: 24px;
     }
     
     .label {
@@ -307,15 +335,22 @@ h1 {
     }
     
     .navigation__item:hover a {
-        min-width: 180px;
+        min-width: 200px;
     }
 }
 
-/* 页脚 */
-.footer {
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    color: #6c757d;
-    font-size: 0.95rem;
-}
+/* 小屏幕优化 */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    .navigation {
+        gap: 12px;
+    }
+    
+    .navigation__item
