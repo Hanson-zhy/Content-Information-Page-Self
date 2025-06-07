@@ -10,40 +10,38 @@
 <body>
     <nav class="cover-navigation">
         <ul class="navigation">
-            <li class="navigation__item github">
+            <li class="navigation__item">
                 <a href="https://github.com/" title="GitHub" target="_blank" rel="noopener">
                     <span class="icon"><i class="fab fa-github"></i></span>
                     <span class="label">GitHub</span>
                 </a>
             </li>
-            <li class="navigation__item cnblogs">
+            <li class="navigation__item">
                 <a href="https://www.cnblogs.com/" title="博客园" target="_blank" rel="noopener">
                     <span class="icon"><i class="fab fa-blogger-b"></i></span>
                     <span class="label">博客园</span>
                 </a>
             </li>
-            <li class="navigation__item zhihu">
+            <li class="navigation__item">
                 <a href="https://www.zhihu.com/" title="知乎" target="_blank" rel="noopener">
                     <span class="icon"><i class="fab fa-zhihu"></i></span>
                     <span class="label">知乎</span>
                 </a>
             </li>
-            <li class="navigation__item email">
-                <div class="email-encrypted" title="点击复制邮箱">
-                    <a href="javascript:void(0);" title="联系邮箱">
-                        <span class="icon"><i class="fas fa-envelope"></i></span>
-                        <span class="label">邮箱</span>
-                    </a>
-                    <span class="tooltip">点击复制邮箱地址</span>
-                </div>
+            <li class="navigation__item">
+                <a href="javascript:decryptEmail('Y29udGFjdEBoYW5zb24udXMua2c=');" title="联系邮箱">
+                    <span class="icon"><i class="fas fa-envelope"></i></span>
+                    <span class="label">邮箱</span>
+                </a>
+                <div class="email-tooltip">点击显示邮箱</div>
             </li>
-            <li class="navigation__item bilibili">
+            <li class="navigation__item">
                 <a href="https://www.bilibili.com/" title="Bilibili" target="_blank" rel="noopener">
                     <span class="icon"><i class="fab fa-bilibili"></i></span>
                     <span class="label">Bilibili</span>
                 </a>
             </li>
-            <li class="navigation__item twitter">
+            <li class="navigation__item">
                 <a href="https://twitter.com/" title="Twitter" target="_blank" rel="noopener">
                     <span class="icon"><i class="fab fa-twitter"></i></span>
                     <span class="label">Twitter</span>
@@ -53,28 +51,61 @@
     </nav>
     
     <script>
-        // 邮箱复制功能
-        function copyEmail() {
-            const email = 'contact@hanson.dev';
-            navigator.clipboard.writeText(email)
-                .then(() => {
-                    const tooltip = document.querySelector('.email-encrypted .tooltip');
-                    tooltip.textContent = '已复制到剪贴板!';
-                    tooltip.style.backgroundColor = '#28a745';
-                    
-                    setTimeout(() => {
-                        tooltip.textContent = '点击复制邮箱地址';
-                        tooltip.style.backgroundColor = '';
-                    }, 2000);
-                })
-                .catch(err => {
-                    console.error('复制失败:', err);
-                    alert('邮箱复制失败，请手动复制: contact@hanson.dev');
-                });
+        // 邮箱解密和复制功能
+        function decryptEmail(encoded) {
+            // Base64解码邮箱
+            const email = atob(encoded);
+            
+            // 创建邮箱显示弹窗
+            const modal = document.createElement('div');
+            modal.className = 'email-modal';
+            
+            modal.innerHTML = `
+                <div class="modal-content">
+                    <h3>联系邮箱</h3>
+                    <div class="email-display">${email}</div>
+                    <div class="modal-buttons">
+                        <button class="copy-btn">复制邮箱</button>
+                        <button class="close-btn">关闭</button>
+                    </div>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+            
+            // 添加关闭功能
+            const closeBtn = modal.querySelector('.close-btn');
+            closeBtn.addEventListener('click', () => {
+                modal.remove();
+            });
+            
+            // 添加复制功能
+            const copyBtn = modal.querySelector('.copy-btn');
+            copyBtn.addEventListener('click', () => {
+                navigator.clipboard.writeText(email)
+                    .then(() => {
+                        copyBtn.textContent = '已复制!';
+                        copyBtn.style.backgroundColor = '#28a745';
+                        
+                        setTimeout(() => {
+                            copyBtn.textContent = '复制邮箱';
+                            copyBtn.style.backgroundColor = '';
+                        }, 2000);
+                    })
+                    .catch(err => {
+                        console.error('复制失败:', err);
+                        alert('邮箱复制失败，请手动复制: ' + email);
+                    });
+            });
         }
         
-        // 为邮箱元素添加点击事件
-        document.querySelector('.email-encrypted').addEventListener('click', copyEmail);
+        // 关闭模态框的ESC键支持
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                const modal = document.querySelector('.email-modal');
+                if (modal) modal.remove();
+            }
+        });
     </script>
 </body>
 </html>
