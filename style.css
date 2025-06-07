@@ -353,4 +353,56 @@ h1 {
         gap: 12px;
     }
     
-    .navigation__item
+    .navigation__item a {
+        height: 60px;
+        min-width: 60px;
+        padding: 0 20px 0 8px;
+    }
+    
+    .icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 10px;
+    }
+    
+    .icon i {
+        font-size: 22px;
+    }
+    
+    .label {
+        font-size: 16px;
+    }
+    
+    .navigation__item:hover a {
+        min-width: 180px;
+    }
+    
+    /* 确保移动端按钮不被遮挡 */
+    .cover-navigation {
+        padding-bottom: 20px;
+        margin: 0 -10px;
+    }
+    
+    .navigation {
+        padding: 5px 15px;
+    }
+}
+
+/* 滚动条样式 */
+.cover-navigation::-webkit-scrollbar {
+    height: 8px;
+}
+
+.cover-navigation::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+}
+
+.cover-navigation::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.cover-navigation::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+}
