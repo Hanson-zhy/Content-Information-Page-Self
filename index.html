@@ -3,37 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="动态社交按钮动画效果 - 基于大碗绿豆沙教程优化">
-    <title>社交按钮动画 | Hanson-zhy</title>
+    <title>社交按钮动画效果</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>社交联系方式</h1>
-        <p class="subtitle">悬停查看动画效果 | 点击访问对应平台</p>
+        <div class="header">
+            <h1>社交按钮动画效果</h1>
+            <p class="subtitle">悬停查看动画效果 | 点击访问对应平台</p>
+        </div>
         
         <nav class="cover-navigation navigation--social">
             <ul class="navigation">
-                <li class="navigation__item">
-                    <a href="https://github.com/Hanson-zhy/" title="GitHub 主页" target="_blank" rel="noopener">
+                <li class="navigation__item github">
+                    <a href="https://github.com/" title="GitHub" target="_blank" rel="noopener">
                         <span class="icon"><i class="fab fa-github"></i></span>
                         <span class="label">GitHub</span>
                     </a>
                 </li>
-                <li class="navigation__item">
-                    <a href="http://www.cnblogs.com/dmego/" title="博客园主页" target="_blank" rel="noopener">
+                <li class="navigation__item cnblogs">
+                    <a href="https://www.cnblogs.com/" title="博客园" target="_blank" rel="noopener">
                         <span class="icon"><i class="fab fa-blogger-b"></i></span>
                         <span class="label">博客园</span>
                     </a>
                 </li>
-                <li class="navigation__item">
-                    <a href="https://www.zhihu.com/people/dmego/" title="知乎主页" target="_blank" rel="noopener">
+                <li class="navigation__item zhihu">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank" rel="noopener">
                         <span class="icon"><i class="fab fa-zhihu"></i></span>
                         <span class="label">知乎</span>
                     </a>
                 </li>
-                <li class="navigation__item">
+                <li class="navigation__item email">
                     <div class="email-encrypted" title="点击复制邮箱">
                         <a href="javascript:void(0);" title="联系邮箱">
                             <span class="icon"><i class="fas fa-envelope"></i></span>
@@ -42,14 +43,14 @@
                         <span class="tooltip">点击复制邮箱地址</span>
                     </div>
                 </li>
-                <li class="navigation__item">
-                    <a href="https://bilibili.com/" title="Bilibili 主页" target="_blank" rel="noopener">
+                <li class="navigation__item bilibili">
+                    <a href="https://www.bilibili.com/" title="Bilibili" target="_blank" rel="noopener">
                         <span class="icon"><i class="fab fa-bilibili"></i></span>
                         <span class="label">Bilibili</span>
                     </a>
                 </li>
-                <li class="navigation__item">
-                    <a href="https://twitter.com/" title="Twitter 主页" target="_blank" rel="noopener">
+                <li class="navigation__item twitter">
+                    <a href="https://twitter.com/" title="Twitter" target="_blank" rel="noopener">
                         <span class="icon"><i class="fab fa-twitter"></i></span>
                         <span class="label">Twitter</span>
                     </a>
@@ -57,21 +58,18 @@
             </ul>
         </nav>
         
-        <div class="info-box">
-            <h2>实现特性</h2>
-            <ul>
-                <li>纯CSS悬停动画效果</li>
-                <li>响应式设计，适配移动设备</li>
-                <li>平台专属配色方案</li>
-                <li>邮箱复制功能</li>
-                <li>优雅的点击反馈效果</li>
-                <li>语义化HTML结构</li>
-            </ul>
+        <div class="features">
+            <div class="feature-badge">纯CSS悬停动画效果</div>
+            <div class="feature-badge">响应式设计</div>
+            <div class="feature-badge">平台专属配色方案</div>
+            <div class="feature-badge">邮箱复制功能</div>
+            <div class="feature-badge">优雅的点击反馈</div>
+            <div class="feature-badge">语义化HTML结构</div>
         </div>
-    </div>
-    
-    <div class="footer">
-        基于大碗绿豆沙教程优化 | 使用HTML+CSS实现 | MIT License
+        
+        <div class="footer">
+            <p>基于大碗绿豆沙教程优化 | 使用HTML+CSS实现 | MIT License</p>
+        </div>
     </div>
     
     <script>
@@ -82,7 +80,7 @@
                 .then(() => {
                     const tooltip = document.querySelector('.email-encrypted .tooltip');
                     tooltip.textContent = '已复制到剪贴板!';
-                    tooltip.style.backgroundColor = '#4CAF50';
+                    tooltip.style.backgroundColor = '#28a745';
                     
                     setTimeout(() => {
                         tooltip.textContent = '点击复制邮箱地址';
@@ -97,17 +95,6 @@
         
         // 为邮箱元素添加点击事件
         document.querySelector('.email-encrypted').addEventListener('click', copyEmail);
-        
-        // 添加键盘导航支持
-        document.addEventListener('keydown', (e) => {
-            const focused = document.activeElement;
-            if (e.key === 'Enter' || e.key === ' ') {
-                if (focused.classList.contains('navigation__item') {
-                    e.preventDefault();
-                    focused.querySelector('a').click();
-                }
-            }
-        });
     </script>
 </body>
 </html>
