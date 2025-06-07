@@ -8,47 +8,50 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav class="cover-navigation">
-        <ul class="navigation">
-            <li class="navigation__item github">
-                <a href="https://github.com/" title="GitHub" target="_blank" rel="noopener">
-                    <span class="icon"><i class="fab fa-github"></i></span>
-                    <span class="label">GitHub</span>
-                </a>
-            </li>
-            <li class="navigation__item cnblogs">
-                <a href="https://www.cnblogs.com/" title="博客园" target="_blank" rel="noopener">
-                    <span class="icon"><i class="fab fa-blogger-b"></i></span>
-                    <span class="label">博客园</span>
-                </a>
-            </li>
-            <li class="navigation__item zhihu">
-                <a href="https://www.zhihu.com/" title="知乎" target="_blank" rel="noopener">
-                    <span class="icon"><i class="fab fa-zhihu"></i></span>
-                    <span class="label">知乎</span>
-                </a>
-            </li>
-            <li class="navigation__item email">
-                <!-- 加密的邮箱地址 -->
-                <a href="javascript:decryptEmail('Y29udGFjdEBoYW5zb24udXMua2c=');" title="邮箱">
-                    <span class="icon"><i class="fas fa-envelope"></i></span>
-                    <span class="label">邮箱</span>
-                </a>
-            </li>
-            <li class="navigation__item bilibili">
-                <a href="https://www.bilibili.com/" title="Bilibili" target="_blank" rel="noopener">
-                    <span class="icon"><i class="fab fa-bilibili"></i></span>
-                    <span class="label">Bilibili</span>
-                </a>
-            </li>
-            <li class="navigation__item twitter">
-                <a href="https://twitter.com/" title="Twitter" target="_blank" rel="noopener">
-                    <span class="icon"><i class="fab fa-twitter"></i></span>
-                    <span class="label">Twitter</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
+    <!-- 添加必要的容器确保内容显示 -->
+    <div class="social-container">
+        <nav class="cover-navigation">
+            <ul class="navigation">
+                <li class="navigation__item github">
+                    <a href="https://github.com/" title="GitHub" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-github"></i></span>
+                        <span class="label">GitHub</span>
+                    </a>
+                </li>
+                <li class="navigation__item cnblogs">
+                    <a href="https://www.cnblogs.com/" title="博客园" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-blogger-b"></i></span>
+                        <span class="label">博客园</span>
+                    </a>
+                </li>
+                <li class="navigation__item zhihu">
+                    <a href="https://www.zhihu.com/" title="知乎" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-zhihu"></i></span>
+                        <span class="label">知乎</span>
+                    </a>
+                </li>
+                <li class="navigation__item email">
+                    <!-- 加密的邮箱地址 -->
+                    <a href="javascript:decryptEmail('Y29udGFjdEBoYW5zb24udXMua2c=');" title="邮箱">
+                        <span class="icon"><i class="fas fa-envelope"></i></span>
+                        <span class="label">邮箱</span>
+                    </a>
+                </li>
+                <li class="navigation__item bilibili">
+                    <a href="https://www.bilibili.com/" title="Bilibili" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-bilibili"></i></span>
+                        <span class="label">Bilibili</span>
+                    </a>
+                </li>
+                <li class="navigation__item twitter">
+                    <a href="https://twitter.com/" title="Twitter" target="_blank" rel="noopener">
+                        <span class="icon"><i class="fab fa-twitter"></i></span>
+                        <span class="label">Twitter</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
     
     <script>
         // 邮箱解密功能
