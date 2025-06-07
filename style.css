@@ -1,4 +1,4 @@
-/* style.css */
+/* style.css - 社交按钮动画效果 */
 /* 基础样式 */
 * {
     margin: 0;
@@ -13,71 +13,23 @@ body {
     min-height: 100vh;
     background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
     font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    color: #333;
     padding: 20px;
-}
-
-/* 主容器 */
-.container {
-    width: 100%;
-    max-width: 900px;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-    padding: 40px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    overflow: hidden;
-}
-
-/* 标题样式 */
-.header {
-    margin-bottom: 40px;
-}
-
-h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.subtitle {
-    font-size: 1.2rem;
-    color: #6c757d;
-    margin-bottom: 10px;
-}
-
-/* 按钮底座容器 */
-.button-base {
-    background: rgba(248, 249, 250, 0.7);
-    border-radius: 25px;
-    padding: 30px;
-    margin: 20px 0;
-    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(0, 0, 0, 0.05);
-    width: 100%;
+    overflow-x: auto;
 }
 
 /* 导航容器 */
 .cover-navigation {
-    margin: 0;
-    overflow-x: auto;
-    padding-bottom: 15px; /* 为滚动条留出空间 */
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .navigation {
     display: flex;
-    flex-wrap: nowrap; /* 禁止换行 */
-    justify-content: flex-start;
-    gap: 20px;
+    flex-wrap: nowrap;
     list-style: none;
-    padding: 5px 10px;
-    min-width: fit-content; /* 确保内容不会被压缩 */
-    width: max-content; /* 根据内容宽度自适应 */
-    margin: 0 auto;
+    padding: 0;
+    gap: 15px;
 }
 
 /* 导航项样式 */
@@ -85,7 +37,6 @@ h1 {
     position: relative;
     overflow: visible;
     transition: transform 0.3s ease;
-    flex-shrink: 0; /* 防止项目被压缩 */
 }
 
 .navigation__item:hover {
@@ -95,11 +46,11 @@ h1 {
 .navigation__item a {
     display: flex;
     align-items: center;
-    height: 80px;
-    min-width: 80px;
-    padding: 0 30px 0 15px;
-    background: white;
-    border-radius: 40px;
+    height: 70px;
+    min-width: 70px;
+    padding: 0 25px 0 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 35px;
     text-decoration: none;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -113,25 +64,25 @@ h1 {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 70px;
-    height: 70px;
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    margin-right: 15px;
+    margin-right: 10px;
     transition: all 0.4s ease;
     position: relative;
     z-index: 2;
     background: #f8f9fa;
-    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
 }
 
 .navigation__item .icon i {
-    font-size: 32px;
+    font-size: 28px;
     transition: transform 0.3s ease, color 0.3s ease;
 }
 
 /* 文字标签样式 */
 .navigation__item .label {
-    font-size: 22px;
+    font-size: 18px;
     font-weight: 600;
     opacity: 0;
     width: 0;
@@ -145,7 +96,7 @@ h1 {
 
 /* 悬停效果 */
 .navigation__item:hover a {
-    min-width: 230px;
+    min-width: 200px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
@@ -157,7 +108,7 @@ h1 {
 
 .navigation__item:hover .icon {
     transform: scale(0.9);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }
 
 .navigation__item:hover .icon i {
@@ -230,8 +181,8 @@ h1 {
     transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.85);
     color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
     font-size: 14px;
     white-space: nowrap;
     opacity: 0;
@@ -247,7 +198,7 @@ h1 {
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    border: 8px solid transparent;
+    border: 6px solid transparent;
     border-top-color: rgba(0, 0, 0, 0.85);
 }
 
@@ -256,153 +207,81 @@ h1 {
     visibility: visible;
 }
 
-/* 页脚 */
-.footer {
-    margin-top: 30px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(0, 0, 0, 0.1);
-    color: #6c757d;
-    font-size: 0.95rem;
-}
-
-/* 响应式设计 - 优化移动端 */
-@media (max-width: 992px) {
-    .container {
-        padding: 30px 20px;
-    }
-    
-    h1 {
-        font-size: 2.5rem;
-    }
-    
-    .subtitle {
-        font-size: 1.1rem;
-    }
-    
-    .button-base {
-        padding: 20px 15px;
-    }
-    
-    .navigation {
-        gap: 15px;
-    }
-    
-    .navigation__item a {
-        height: 70px;
-        min-width: 70px;
-        padding: 0 25px 0 10px;
-    }
-    
-    .icon {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .icon i {
-        font-size: 28px;
-    }
-    
-    .label {
-        font-size: 20px;
-    }
-}
-
+/* 响应式设计 - 优化移动端显示 */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 2.0rem;
+    body {
+        padding: 10px;
+        min-height: 100vh;
+        align-items: flex-start;
+        padding-top: 40px;
     }
     
-    .subtitle {
-        font-size: 0.95rem;
-    }
-    
-    .navigation__item a {
-        height: 65px;
-        min-width: 65px;
-    }
-    
-    .icon {
-        width: 55px;
-        height: 55px;
-    }
-    
-    .icon i {
-        font-size: 24px;
-    }
-    
-    .label {
-        font-size: 18px;
-    }
-    
-    .navigation__item:hover a {
-        min-width: 200px;
-    }
-}
-
-/* 小屏幕优化 */
-@media (max-width: 480px) {
-    .container {
-        padding: 20px 15px;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
+    .cover-navigation {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        justify-content: flex-start;
     }
     
     .navigation {
-        gap: 12px;
+        padding: 0 20px;
+        gap: 10px;
     }
     
     .navigation__item a {
         height: 60px;
         min-width: 60px;
-        padding: 0 20px 0 8px;
     }
     
-    .icon {
+    .navigation__item .icon {
         width: 50px;
         height: 50px;
-        margin-right: 10px;
     }
     
-    .icon i {
-        font-size: 22px;
-    }
-    
-    .label {
-        font-size: 16px;
+    .navigation__item .icon i {
+        font-size: 24px;
     }
     
     .navigation__item:hover a {
         min-width: 180px;
     }
     
-    /* 确保移动端按钮不被遮挡 */
-    .cover-navigation {
-        padding-bottom: 20px;
-        margin: 0 -10px;
+    .label {
+        font-size: 16px;
     }
     
-    .navigation {
-        padding: 5px 15px;
+    .email-encrypted .tooltip {
+        font-size: 12px;
+        padding: 6px 12px;
     }
 }
 
-/* 滚动条样式 */
-.cover-navigation::-webkit-scrollbar {
-    height: 8px;
-}
-
-.cover-navigation::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 10px;
-}
-
-.cover-navigation::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-}
-
-.cover-navigation::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.3);
+@media (max-width: 480px) {
+    .navigation {
+        gap: 8px;
+    }
+    
+    .navigation__item a {
+        height: 50px;
+        min-width: 50px;
+        padding: 0 20px 0 8px;
+    }
+    
+    .navigation__item .icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+    }
+    
+    .navigation__item .icon i {
+        font-size: 20px;
+    }
+    
+    .navigation__item:hover a {
+        min-width: 160px;
+    }
+    
+    .label {
+        font-size: 14px;
+    }
 }
