@@ -1,3 +1,4 @@
+/* style.css - 社交按钮动画效果 */
 /* 基础样式 */
 * {
     margin: 0;
@@ -10,75 +11,17 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
-    overflow-x: auto;
-    position: relative;
-}
-
-#panel {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
     background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
-    background-size: cover;
-    background-position: center;
-    transition: background-image 1.5s ease;
-}
-
-.container {
-    background: rgba(255, 255, 255, 0.85);
-    border-radius: 20px;
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
-    padding: 40px;
-    text-align: center;
-    backdrop-filter: blur(10px);
-    width: 90%;
-    max-width: 900px;
-    margin: 20px;
-}
-
-.header {
-    margin-bottom: 40px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.header.up {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-h1 {
-    font-size: 3rem;
-    margin-bottom: 15px;
-    background: linear-gradient(90deg, #ff416c, #ff4b2b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-#description {
-    font-size: 1.2rem;
-    color: #6c757d;
-    margin-bottom: 10px;
-    min-height: 60px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease 0.2s, transform 0.8s ease 0.2s;
-}
-
-#description.up {
-    opacity: 1;
-    transform: translateY(0);
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+    padding: 20px;
+    overflow-x: auto;
 }
 
 /* 导航容器 */
 .cover-navigation {
-    margin: 40px 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .navigation {
@@ -87,7 +30,6 @@ h1 {
     list-style: none;
     padding: 0;
     gap: 15px;
-    justify-content: center;
 }
 
 /* 导航项样式 */
@@ -95,17 +37,208 @@ h1 {
     position: relative;
     overflow: visible;
     transition: transform 0.3s ease;
+}
+
+.navigation__item:hover {
+    transform: translateY(-8px);
+}
+
+.navigation__item a {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    min-width: 70px;
+    padding: 0 25px 0 10px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 35px;
+    text-decoration: none;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+    cursor: pointer;
+}
+
+/* 图标样式 */
+.navigation__item .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-right: 10px;
+    transition: all 0.4s ease;
+    position: relative;
+    z-index: 2;
+    background: #f8f9fa;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+}
+
+.navigation__item .icon i {
+    font-size: 28px;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* 文字标签样式 */
+.navigation__item .label {
+    font-size: 18px;
+    font-weight: 600;
     opacity: 0;
-    transform: translateY(30px);
+    width: 0;
+    transition: 
+        opacity 0.3s ease, 
+        width 0.3s ease;
+    white-space: nowrap;
+    position: relative;
+    z-index: 1;
 }
 
-.navigation__item.up {
+/* 悬停效果 */
+.navigation__item:hover a {
+    min-width: 200px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+.navigation__item:hover .label {
     opacity: 1;
-    transform: translateY(0);
+    width: auto;
+    padding-right: 15px;
 }
 
-.navigation__item:nth-child(1) { transition-delay: 0.4s; }
-.navigation__item:nth-child(2) { transition-delay: 0.5s; }
-.navigation__item:nth-child(3) { transition-delay: 0.6s; }
-.navigation__item:nth-child(4) { transition-delay: 0.7s; }
-.navigation__item:nth-child(5) { transition-delay: 0.8s;
+.navigation__item:hover .icon {
+    transform: scale(0.9);
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.navigation__item:hover .icon i {
+    transform: scale(1.15);
+    color: white !important;
+}
+
+/* 平台专属颜色 */
+.github .icon { color: #333; }
+.github:hover .icon { background: #333; }
+.github .label { color: #333; }
+
+.cnblogs .icon { color: #2e7acc; }
+.cnblogs:hover .icon { background: #2e7acc; }
+.cnblogs .label { color: #2e7acc; }
+
+.zhihu .icon { color: #0084ff; }
+.zhihu:hover .icon { background: #0084ff; }
+.zhihu .label { color: #0084ff; }
+
+.email .icon { color: #d44638; }
+.email:hover .icon { background: #d44638; }
+.email .label { color: #d44638; }
+
+.bilibili .icon { color: #fb7299; }
+.bilibili:hover .icon { background: #fb7299; }
+.bilibili .label { color: #fb7299; }
+
+.twitter .icon { color: #1da1f2; }
+.twitter:hover .icon { background: #1da1f2; }
+.twitter .label { color: #1da1f2; }
+
+/* 点击效果 */
+.navigation__item a::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    z-index: 0;
+}
+
+.navigation__item a:active::after {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+    transition: width 0.6s ease, height 0.6s ease, opacity 0.6s ease;
+}
+
+.navigation__item a:active {
+    transform: scale(0.98);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式设计 - 优化移动端显示 */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+        min-height: 100vh;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+    
+    .cover-navigation {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 20px;
+        justify-content: flex-start;
+    }
+    
+    .navigation {
+        padding: 0 20px;
+        gap: 10px;
+    }
+    
+    .navigation__item a {
+        height: 60px;
+        min-width: 60px;
+    }
+    
+    .navigation__item .icon {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .navigation__item .icon i {
+        font-size: 24px;
+    }
+    
+    .navigation__item:hover a {
+        min-width: 180px;
+    }
+    
+    .label {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .navigation {
+        gap: 8px;
+    }
+    
+    .navigation__item a {
+        height: 50px;
+        min-width: 50px;
+        padding: 0 20px 0 8px;
+    }
+    
+    .navigation__item .icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+    }
+    
+    .navigation__item .icon i {
+        font-size: 20px;
+    }
+    
+    .navigation__item:hover a {
+        min-width: 160px;
+    }
+    
+    .label {
+        font-size: 14px;
+    }
+}
