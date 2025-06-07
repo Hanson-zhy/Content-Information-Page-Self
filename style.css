@@ -1,4 +1,4 @@
-/* style.css - 社交按钮动画效果 */
+/* style.css */
 /* 基础样式 */
 * {
     margin: 0;
@@ -94,6 +94,40 @@ body {
     z-index: 1;
 }
 
+/* 邮箱提示样式 */
+.email-tooltip {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.email-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.85);
+}
+
+.navigation__item:nth-child(4):hover .email-tooltip {
+    opacity: 1;
+    visibility: visible;
+}
+
 /* 悬停效果 */
 .navigation__item:hover a {
     min-width: 200px;
@@ -117,29 +151,23 @@ body {
 }
 
 /* 平台专属颜色 */
-.github .icon { color: #333; }
-.github:hover .icon { background: #333; }
-.github .label { color: #333; }
+.navigation__item:nth-child(1):hover .icon { background: #333; }
+.navigation__item:nth-child(1) .label { color: #333; }
 
-.cnblogs .icon { color: #2e7acc; }
-.cnblogs:hover .icon { background: #2e7acc; }
-.cnblogs .label { color: #2e7acc; }
+.navigation__item:nth-child(2):hover .icon { background: #2e7acc; }
+.navigation__item:nth-child(2) .label { color: #2e7acc; }
 
-.zhihu .icon { color: #0084ff; }
-.zhihu:hover .icon { background: #0084ff; }
-.zhihu .label { color: #0084ff; }
+.navigation__item:nth-child(3):hover .icon { background: #0084ff; }
+.navigation__item:nth-child(3) .label { color: #0084ff; }
 
-.email .icon { color: #d44638; }
-.email:hover .icon { background: #d44638; }
-.email .label { color: #d44638; }
+.navigation__item:nth-child(4):hover .icon { background: #d44638; }
+.navigation__item:nth-child(4) .label { color: #d44638; }
 
-.bilibili .icon { color: #fb7299; }
-.bilibili:hover .icon { background: #fb7299; }
-.bilibili .label { color: #fb7299; }
+.navigation__item:nth-child(5):hover .icon { background: #fb7299; }
+.navigation__item:nth-child(5) .label { color: #fb7299; }
 
-.twitter .icon { color: #1da1f2; }
-.twitter:hover .icon { background: #1da1f2; }
-.twitter .label { color: #1da1f2; }
+.navigation__item:nth-child(6):hover .icon { background: #1da1f2; }
+.navigation__item:nth-child(6) .label { color: #1da1f2; }
 
 /* 点击效果 */
 .navigation__item a::after {
@@ -168,43 +196,81 @@ body {
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-/* 邮箱提示样式 */
-.email-encrypted {
+/* 邮箱模态框样式 */
+.email-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    max-width: 90%;
+    width: 400px;
+    text-align: center;
     position: relative;
+}
+
+.modal-content h3 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.email-display {
+    font-size: 22px;
+    font-weight: 600;
+    padding: 15px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    color: #d44638;
+    word-break: break-all;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.copy-btn, .close-btn {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 16px;
+    font-weight: 600;
     cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.email-encrypted .tooltip {
-    position: absolute;
-    bottom: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.85);
+.copy-btn {
+    background: #3498db;
     color: white;
-    padding: 8px 16px;
-    border-radius: 6px;
-    font-size: 14px;
-    white-space: nowrap;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-    z-index: 10;
 }
 
-.email-encrypted .tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: rgba(0, 0, 0, 0.85);
+.copy-btn:hover {
+    background: #2980b9;
+    transform: translateY(-3px);
 }
 
-.email-encrypted:hover .tooltip {
-    opacity: 1;
-    visibility: visible;
+.close-btn {
+    background: #e74c3c;
+    color: white;
+}
+
+.close-btn:hover {
+    background: #c0392b;
+    transform: translateY(-3px);
 }
 
 /* 响应式设计 - 优化移动端显示 */
@@ -250,9 +316,25 @@ body {
         font-size: 16px;
     }
     
-    .email-encrypted .tooltip {
+    .email-tooltip {
+        top: -35px;
         font-size: 12px;
         padding: 6px 12px;
+    }
+    
+    .modal-content {
+        width: 90%;
+        padding: 20px;
+    }
+    
+    .email-display {
+        font-size: 18px;
+        padding: 10px;
+    }
+    
+    .copy-btn, .close-btn {
+        padding: 10px 20px;
+        font-size: 14px;
     }
 }
 
