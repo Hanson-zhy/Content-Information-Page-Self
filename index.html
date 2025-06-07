@@ -8,153 +8,59 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="panel"></div>
-    
-    <div class="container">
-        <div class="header">
-            <h1>社交按钮动画效果</h1>
-            <p id="description">加载中...</p>
-        </div>
-        
-        <nav class="cover-navigation">
-            <ul class="navigation">
-                <li class="navigation__item github">
-                    <a href="https://github.com/" title="GitHub" target="_blank" rel="noopener">
-                        <span class="icon"><i class="fab fa-github"></i></span>
-                        <span class="label">GitHub</span>
-                    </a>
-                </li>
-                <li class="navigation__item cnblogs">
-                    <a href="https://www.cnblogs.com/" title="博客园" target="_blank" rel="noopener">
-                        <span class="icon"><i class="fab fa-blogger-b"></i></span>
-                        <span class="label">博客园</span>
-                    </a>
-                </li>
-                <li class="navigation__item zhihu">
-                    <a href="https://www.zhihu.com/" title="知乎" target="_blank" rel="noopener">
-                        <span class="icon"><i class="fab fa-zhihu"></i></span>
-                        <span class="label">知乎</span>
-                    </a>
-                </li>
-                <li class="navigation__item email">
-                    <a href="javascript:decryptEmail('Y29udGFjdEBoYW5zb24udXMua2c=');" title="邮箱">
-                        <span class="icon"><i class="fas fa-envelope"></i></span>
-                        <span class="label">邮箱</span>
-                    </a>
-                </li>
-                <li class="navigation__item bilibili">
-                    <a href="https://www.bilibili.com/" title="Bilibili" target="_blank" rel="noopener">
-                        <span class="icon"><i class="fab fa-bilibili"></i></span>
-                        <span class="label">Bilibili</span>
-                    </a>
-                </li>
-                <li class="navigation__item twitter">
-                    <a href="https://twitter.com/" title="Twitter" target="_blank" rel="noopener">
-                        <span class="icon"><i class="fab fa-twitter"></i></span>
-                        <span class="label">Twitter</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        
-        <div class="bg-control">
-            <button id="change-bg-btn"><i class="fas fa-sync-alt"></i> 切换背景</button>
-        </div>
-    </div>
+    <nav class="cover-navigation">
+        <ul class="navigation">
+            <li class="navigation__item github">
+                <a href="https://github.com/" title="GitHub" target="_blank" rel="noopener">
+                    <span class="icon"><i class="fab fa-github"></i></span>
+                    <span class="label">GitHub</span>
+                </a>
+            </li>
+            <li class="navigation__item cnblogs">
+                <a href="https://www.cnblogs.com/" title="博客园" target="_blank" rel="noopener">
+                    <span class="icon"><i class="fab fa-blogger-b"></i></span>
+                    <span class="label">博客园</span>
+                </a>
+            </li>
+            <li class="navigation__item zhihu">
+                <a href="https://www.zhihu.com/" title="知乎" target="_blank" rel="noopener">
+                    <span class="icon"><i class="fab fa-zhihu"></i></span>
+                    <span class="label">知乎</span>
+                </a>
+            </li>
+            <li class="navigation__item email">
+                <!-- 加密的邮箱地址 -->
+                <a href="javascript:decryptEmail('Y29udGFjdEBoYW5zb24udXMua2c=');" title="邮箱">
+                    <span class="icon"><i class="fas fa-envelope"></i></span>
+                    <span class="label">邮箱</span>
+                </a>
+            </li>
+            <li class="navigation__item bilibili">
+                <a href="https://www.bilibili.com/" title="Bilibili" target="_blank" rel="noopener">
+                    <span class="icon"><i class="fab fa-bilibili"></i></span>
+                    <span class="label">Bilibili</span>
+                </a>
+            </li>
+            <li class="navigation__item twitter">
+                <a href="https://twitter.com/" title="Twitter" target="_blank" rel="noopener">
+                    <span class="icon"><i class="fab fa-twitter"></i></span>
+                    <span class="label">Twitter</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
     
     <script>
-        // iUp 动画控制器
-        var iUp = (function () {
-            var time = 0,
-                duration = 150,
-                clean = function () {
-                    time = 0;
-                },
-                up = function (element) {
-                    setTimeout(function () {
-                        element.classList.add("up");
-                    }, time);
-                    time += duration;
-                },
-                down = function (element) {
-                    element.classList.remove("up");
-                },
-                toggle = function (element) {
-                    setTimeout(function () {
-                        element.classList.toggle("up");
-                    }, time);
-                    time += duration;
-                };
-            return {
-                clean: clean,
-                up: up,
-                down: down,
-                toggle: toggle
-            };
-        })();
-
-        // 获取Bing壁纸
-        function getBingImages() {
-            const imgUrls = [
-                "/th?id=OHR.BledCastle_ZH-CN0248424273_1920x1080.jpg",
-                "/th?id=OHR.GothicRuins_ZH-CN0090395086_1920x1080.jpg",
-                "/th?id=OHR.SeaOtters_ZH-CN0019680477_1920x1080.jpg",
-                "/th?id=OHR.FrenchComedy_ZH-CN9933441781_1920x1080.jpg",
-                "/th?id=OHR.LakeBledSunrise_ZH-CN9716762331_1920x1080.jpg",
-                "/th?id=OHR.SardineRun_ZH-CN9537395501_1920x1080.jpg",
-                "/th?id=OHR.PortugalDay_ZH-CN9360809809_1920x1080.jpg"
-            ];
-            
-            var indexName = "bing-image-index";
-            var index = sessionStorage.getItem(indexName);
-            var panel = document.querySelector('#panel');
-            
-            if (isNaN(index) || index == 6) index = 0;
-            else index++;
-            
-            var imgUrl = imgUrls[index];
-            var url = "https://www.cn.bing.com" + imgUrl;
-            panel.style.backgroundImage = "url('" + url + "')";
-            sessionStorage.setItem(indexName, index);
-        }
-
-        // 邮箱解密函数
+        // 邮箱解密功能
         function decryptEmail(encoded) {
-            var address = atob(encoded);
-            alert("邮箱地址: " + address);
-            // window.location.href = "mailto:" + address;
+            try {
+                const address = atob(encoded);
+                window.location.href = "mailto:" + address;
+            } catch (e) {
+                console.error('邮箱解密失败:', e);
+                alert('邮箱功能暂时不可用，请稍后再试');
+            }
         }
-
-        // 页面加载完成后执行
-        document.addEventListener('DOMContentLoaded', function () {
-            // 获取一言数据
-            var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    var res = JSON.parse(this.responseText);
-                    var descElement = document.getElementById('description');
-                    descElement.innerHTML = res.hitokoto + "<br/> -「<strong>" + res.from + "</strong>」";
-                    iUp.up(descElement);
-                }
-            };
-            xhr.open("GET", "https://v1.hitokoto.cn", true);
-            xhr.send();
-
-            // 设置Bing背景
-            getBingImages();
-            
-            // 应用动画效果
-            var headerElement = document.querySelector(".header");
-            iUp.up(headerElement);
-            
-            var iUpElements = document.querySelectorAll(".navigation__item");
-            iUpElements.forEach(function (element) {
-                iUp.up(element);
-            });
-
-            // 背景切换按钮事件
-            document.getElementById('change-bg-btn').addEventListener('click', getBingImages);
-        });
     </script>
 </body>
 </html>
